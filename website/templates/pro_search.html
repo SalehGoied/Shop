@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<div align=center>
+<div style="width: 70%; align-items: center;">
+    <form method="POST">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Search Product/s</span>
+            <input name="search" type="text" class="form-control" placeholder="Search/ enter a for all Product" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+      <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+    <br><br><br>
+    <div style="align-items: center;">
+        {% if products %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" style="width: 3%;">#</th>
+                    <th scope="col" style="width: 60%;">Name</th>
+                    <th scope="col" style="width: 15%;">Price</th>
+                    <th scope="col" style="width: 15%;">Quantity</th>
+                    <th scope="col" style="width: 7%;">Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}    
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td><a href="/update_pro/{{product.id}}">✏️</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          {% endif %}
+    </div>
+
+</div>
+
+</div>
+{% endblock %}

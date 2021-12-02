@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Pay{% endblock %}
+{% block content %}
+<div align=center>
+<div style="width: 70%; align-items: center;">
+    <form method="POST">
+        <div class="input-group mb-3">
+            <input name="pay" step=0.01 type="number" class="form-control" placeholder="pay" aria-label="Username" aria-describedby="basic-addon1" required>
+            <button type="submit" class="btn btn-warning">pay</button>
+        </div>
+    </form>
+    <br><br>
+
+</div>
+
+</div>
+{% endblock %}

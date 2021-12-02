@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}IN waited{% endblock %}
+{% block content %}
+<div>
+    {% if orders %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col" style="width: 3%;">#</th>
+            <th scope="col" style="width: 60%;">Name</th>
+            <th scope="col" style="width: 15%;">Amount</th>
+            <th scope="col" style="width: 15%;">Total Amount</th>
+            <th scope="col" style="width: 7%;">See Order</th>
+        </tr>
+        </thead>
+        
+            <tbody>
+         {% for order in orders %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{order.name}}</td>
+                    <td>{{order.amount}}</td>
+                    <td>{{order.total_amount}}</td>
+                    <td><a href="/check_out/{{order.history_id}}">✔️</a><a href="/see_order/{{order.history_id}}">👀</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    {% else %}
+        <h1>No order in waited</h1>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Desplay Orders{% endblock %}
+{% block content %}
+<div align=center style="font-size: large;">
+<div style="width: 70%; align-items: center;">
+    {% if orders %}
+    <div><button id="printPageButton" onClick="window.print();return false" class="btn btn-warning">Print this page
+    </button></div>
+    <div align=left>
+        <p><strong>Name:</strong> {{info.name}}</p>
+        <p><strong>Date:</strong> {{info.date}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Phone:</strong> {{info.Phone}}</p>
+        <p><strong>Address:</strong> {{info.address}}</p>
+        <p><strong>Amount:</strong> {{info.amount}}
+            {% if info.check_out == false %}
+            <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Old Amount:</strong> {{info.old_amount}}<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total:</strong> {{info.total_amount}}</p>
+            {% endif %}
+    </div>
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sum</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}    
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{order.name}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.sum_price}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <br>
+      
+      {% else %}
+
+<div align=left>
+        <p><h4><strong>Name:</strong> {{info.name}}</h4></p>
+        <p><h4><strong>Phone:</strong> {{info.Phone}}</h4></p>
+        <p><h4><strong>Address:</strong> {{info.address}}</h4></p>
+        <p><h4><strong>Date:</strong> {{info.date}}</h4></p>
+        <p><strong>Pay:</strong> {{info.amount}}</p>
+    </div>
+
+    {% endif %}
+</div>
+</div>
+{% endblock %}

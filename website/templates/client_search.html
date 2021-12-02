@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Client{% endblock %}
+{% block content %}
+<div align=center>
+<div style="width: 70%; align-items: center;">
+    <form method="POST">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Search Client/s</span>
+            <input name="search" type="text" class="form-control" placeholder="Search/ enter a for all Product" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+      <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+    <br><br><br>
+    <div style="align-items: center;">
+        {% if clients %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" style="width: 3%;">#</th>
+                    <th scope="col" style="width: 50%;">Name</th>
+                    <th scope="col" style="width: 15%;">Phone</th>
+                    <th scope="col" style="width: 15%;">Amount</th>
+                    <th scope="col" style="width: 25%;">Insert</th>
+                    <th scope="col" style="width: 60%;">Display History</th>
+                    <th scope="col" style="width: 7%;">Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for client in clients %}    
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{client.name}}</td>
+                    <td>{{client.phone}}</td>
+                    <td>{{client.amount}}</td>
+                    <td><a href="/order/{{client.id}}">➕</a> <a href="/pay/{{client.id}}">📤</a></td>
+                    <td><a href="/see_history/{{client.id}}">👁️</a></td>
+                    <td><a href="/update_client/{{client.id}}">✏️</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          {% endif %}
+    </div>
+
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Order{% endblock %}
+{% block content %}
+<div align=center>
+<div style="width: 70%; align-items: center;">
+    <form method="POST">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Product Name</span>
+            <input name="pro_name" type="text" class="form-control" placeholder="pro_name" aria-label="name" aria-describedby="basic-addon1" required>
+          </div>
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Quantity</span>
+            <input value=1 name="quantity" type="number" class="form-control" placeholder="Quantity" aria-label="quantity" aria-describedby="basic-addon1">
+          </div>
+          <button type="submit" class="btn btn-warning">Order</button>
+
+          
+      
+    </form>
+    <br><br>
+    {% if orders %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sum</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}    
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{order.name}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.sum_price}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <button name="button" type="button" class="btn btn-warning"><a href="/response/{{history_id}}">Submit</a></button>
+    {% endif %}
+
+    
+</div>
+</div>
+{% endblock %}

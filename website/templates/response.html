@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Response{% endblock %}
+{% block content %}
+<div align=center>
+<div style="width: 70%; align-items: center;">
+          
+    
+    {% if orders %}
+    <h2>Ok order has been insert</h2>
+    <h3>The amount = {{amount.history_amount}} '' The Total amount = {{amount.client_amount}}</h3><br><br>
+    <button name="button" type="button" class="btn btn-warning"><a href="/"> Back</a></button><br><br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sum</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}    
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{order.name}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.sum_price}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <h2>Ok</h2>
+      <h3>The amount = {{amount.history_amount}} '' The Total amount = {{amount.client_amount}}</h3><br><br>
+      <button name="button" type="button" class="btn btn-warning"><a href="/"> Back</a></button>
+     
+    {% endif %}
+
+    
+</div>
+
+</div>
+{% endblock %}

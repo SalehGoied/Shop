@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Update Client{% endblock %}
+{% block content %}
+<div align=center>
+<div style="width: 40%; align-items: center;">
+    <form method="POST">
+        <div class="input-group mb-3">
+            <input value="{{client.name}}" name="name" type="text" class="form-control" placeholder="Client name" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+          
+          <div class="input-group mb-3">
+            <input value="{{client.phone}}" name="phone" type="text" class="form-control" placeholder="Phone numper"  aria-label="Recipient's username" aria-describedby="basic-addon2">
+          </div>
+          
+          <div class="input-group mb-3">
+            <input value="{{client.address}}" name="address" type="text" class="form-control" placeholder="Address" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+          
+      <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+</div>
+
+</div>
+{% endblock %}
